@@ -1,0 +1,16 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+django = "*"
+passlib = "*"
+bcrypt = "*"
+docutils = "*"
+django-enumfields = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.6"
