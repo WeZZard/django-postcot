@@ -13,7 +13,7 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 from os import path
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = path.dirname(path.dirname(path.abspath(__file__)))
+BASE_DIR = path.dirname(path.dirname(path.dirname(path.abspath(__file__))))
 
 
 # Quick-start development settings - unsuitable for production
@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'postcot_primary.apps.PostcotPrimaryConfig',
     'django.contrib.admin',
+    'django.contrib.admindocs',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
