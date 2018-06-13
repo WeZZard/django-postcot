@@ -1,8 +1,8 @@
 from django.db import models
 from django.core import exceptions
 
-from ..base_types import AccessControlRole
-from ..base_types import AccessControlContent
+from ..base_types import AccessControlPhase
+from ..base_types import AccessControlInputKind
 from .access_action import AccessAction
 
 from ..validators import PostfixIdentifierValidator
@@ -11,12 +11,12 @@ import enumfields
 
 
 class AccessControl(models.Model):
-    subject_role: AccessControlRole = enumfields.EnumField(
-        AccessControlRole, max_length=1
+    phase: AccessControlPhase = enumfields.EnumField(
+        AccessControlPhase, max_length=1
     )
 
-    subject_content: AccessControlContent = enumfields.EnumField(
-        AccessControlContent, max_length=1
+    input_kind: AccessControlInputKind = enumfields.EnumField(
+        AccessControlInputKind, max_length=1
     )
 
     reverses_hostname: bool = models.BooleanField(
@@ -56,7 +56,7 @@ class AccessControl(models.Model):
 
     def _validate_pattern(self):
         try:
-            validate = self.subject_content.pattern_validator()
+            validate = self.input_kind.pattern_validator()
             validate()(self.pattern)
         except exceptions.ValidationError:
             raise exceptions.ValidationError(

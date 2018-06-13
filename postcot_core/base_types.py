@@ -13,7 +13,7 @@ from .validators import (
 import enumfields
 
 
-class AccessControlRole(enumfields.Enum):
+class AccessControlPhase(enumfields.Enum):
     CLIENT = 'CLIENT'
     HELO = 'HELO'
     RECIPIENT = 'RECIPIENT'
@@ -26,7 +26,7 @@ class AccessControlRole(enumfields.Enum):
         SENDER = 'Sender'
 
 
-class AccessControlContent(enumfields.Enum):
+class AccessControlInputKind(enumfields.Enum):
     CERT = 'CERT'
     HOSTNAME = 'HOSTNAME'
     A_RECORD = 'A_RECORD'
@@ -43,17 +43,17 @@ class AccessControlContent(enumfields.Enum):
         SASL = 'SASL'
 
     def pattern_validator(self) -> Optional[Type[Callable[[str], NoReturn]]]:
-        if self == AccessControlContent.CERT:
+        if self == AccessControlInputKind.CERT:
             return CertificateFingerprintPatternValidator
-        if self == AccessControlContent.HOSTNAME:
+        if self == AccessControlInputKind.HOSTNAME:
             return HostnameOrAddressPatternValidator
-        if self == AccessControlContent.A_RECORD:
+        if self == AccessControlInputKind.A_RECORD:
             return IpAddressValidator
-        if self == AccessControlContent.MX_RECORD:
+        if self == AccessControlInputKind.MX_RECORD:
             return IpAddressValidator
-        if self == AccessControlContent.NS_RECORD:
+        if self == AccessControlInputKind.NS_RECORD:
             return IpAddressValidator
-        if self == AccessControlContent.SASL:
+        if self == AccessControlInputKind.SASL:
             return SaslPatternValidator
         raise ValueError('Unexpected AccessControlType value: %s' % self)
 
@@ -91,14 +91,6 @@ class PasswordSchema(enumfields.Enum):
     def __iter__(self):
         for x in [self.value, self.label]:
             yield x
-
-    @classmethod
-    def _pad_separator_string(cls, title: str) -> str:
-        title_len = len(title)
-        max_len = max(list([len(each[1]) for each in super().choices()]))
-        left_padding = int((max_len - title_len) / 2)
-        right_padding = max_len - left_padding - title_len
-        return '-' * left_padding + title + '-' * right_padding
 
     class Labels:
         PLAIN = 'PLAIN, password in plaintext.'

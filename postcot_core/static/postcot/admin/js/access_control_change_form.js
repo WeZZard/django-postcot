@@ -18,8 +18,8 @@ $(document).ready( function () {
     };
 
     form._update_postfix_identifier = function() {
-        let role_select = $("#id_subject_role");
-        let content_select = $("#id_subject_content");
+        let role_select = $("#id_phase");
+        let content_select = $("#id_input_kind");
         let reverses_hostname_checkbox = $("#id_reverses_hostname");
         let postfix_identifier_input = $("#id_postfix_identifier");
 
@@ -125,8 +125,8 @@ $(document).ready( function () {
     form._update_reverses_hostname_visibility = function() {
         let reverses_hostname_field = $("div.field-box.field-reverses_hostname");
 
-        let role_select = $("#id_subject_role");
-        let content_select = $("#id_subject_content");
+        let role_select = $("#id_phase");
+        let content_select = $("#id_input_kind");
 
         let role = role_select.val();
         let content = content_select.val();
@@ -153,12 +153,12 @@ $(document).ready( function () {
     form._update_reverses_hostname_visibility();
     form._update_postfix_identifier();
 
-    $("#id_subject_role").change(function() {
+    $("#id_phase").change(function() {
         form._update_reverses_hostname_visibility();
         form._update_postfix_identifier();
     });
 
-    $("#id_subject_content").change(function() {
+    $("#id_input_kind").change(function() {
         form._update_reverses_hostname_visibility();
         form._update_postfix_identifier();
     });

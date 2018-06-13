@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.admin import widgets as admin_widgets
 
-from ..base_types import AccessControlRole, AccessControlContent
+from ..base_types import AccessControlPhase, AccessControlInputKind
 from ..models import AccessAction
 
 import enumfields
@@ -12,20 +12,20 @@ class AccessControlForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
         self.fields['postfix_identifier'].widget.attrs['readonly']='readonly'
 
-    subject_role: AccessControlRole = enumfields.EnumField(
-        AccessControlRole,
+    phase: AccessControlPhase = enumfields.EnumField(
+        AccessControlPhase,
         max_length=1,
     ).formfield(
-        label='Subject Role',
-        initial=AccessControlRole.CLIENT
+        label='Phase',
+        initial=AccessControlPhase.CLIENT
     )
 
-    subject_content: AccessControlContent = enumfields.EnumField(
-        AccessControlContent,
+    input_kind: AccessControlInputKind = enumfields.EnumField(
+        AccessControlInputKind,
         max_length=1,
     ).formfield(
-        label='Subject Content',
-        initial=AccessControlContent.HOSTNAME
+        label='Input',
+        initial=AccessControlInputKind.HOSTNAME
     )
 
     reverses_hostname: bool = forms.BooleanField(

@@ -106,7 +106,7 @@ class AccessControlAdmin(admin.ModelAdmin):
     _fieldsets_for_creation = [
         (None, {
             'fields': [
-                ('subject_role', 'subject_content', 'reverses_hostname'),
+                ('phase', 'input_kind', 'reverses_hostname'),
                 'postfix_identifier',
                 'pattern',
                 'action',
@@ -118,7 +118,7 @@ class AccessControlAdmin(admin.ModelAdmin):
     _fieldsets_for_update = [
         (None, {
             'fields': [
-                ('subject_role', 'subject_content', 'reverses_hostname'),
+                ('phase', 'input_kind', 'reverses_hostname'),
                 'postfix_identifier',
                 'pattern',
                 'action',
