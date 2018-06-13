@@ -10,6 +10,7 @@ bcrypt = "*"
 docutils = "*"
 django-enumfields = "*"
 django-admin-honeypot = "*"
+uwsgi = "*"
 
 [dev-packages]
 
