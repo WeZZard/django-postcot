@@ -31,7 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'postcot_core',
+    'postcot_core.apps.PostcotCoreConfig',
     'admin_honeypot',
     'django.contrib.admin',
     'django.contrib.admindocs',

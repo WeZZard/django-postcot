@@ -6,6 +6,7 @@ from django.forms import widgets
 from ..base_types import PasswordSchema
 from ..models import Account
 from ..utils import hash_password
+from ..utils import verify_password
 
 import enum
 
@@ -71,9 +72,9 @@ set the password's encrypted version directly.\
     )
 
     def clean(self) -> Dict[str, str]:
-        cleaned_data = super().clean()
-
         account: Account = self.instance
+
+        cleaned_data = super().clean()
 
         password_update_process = self._get_password_update_process(
             cleaned_data
@@ -168,6 +169,7 @@ set the password's encrypted version directly.\
                 error='Empty password is not allowed.'
             )
             return False
+        return True
 
     def _validate_password_consistency(
             self,
@@ -181,18 +183,19 @@ set the password's encrypted version directly.\
                 error='Not the same to the password above.'
             )
             return False
-
         return True
 
     def _verify_password(
             self,
             account: Account,
-            old_password: str,
+            old_password: str
     ) -> bool:
         if self.is_newly_created:
             return True
         else:
-            if account.verify_password(old_password):
+            if not account.verify_password(
+                    old_password
+            ):
                 self.add_error(
                     field='old_password',
                     error='Incorrect old password.'
