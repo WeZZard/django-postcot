@@ -9,6 +9,7 @@ passlib = "*"
 bcrypt = "*"
 docutils = "*"
 django-enumfields = "*"
+django-admin-honeypot = "*"
 
 [dev-packages]
 

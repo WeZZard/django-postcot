@@ -18,7 +18,8 @@ from django.urls import path, include
 from django.views.defaults import permission_denied
 
 urlpatterns = [
-    path('', permission_denied, {'exception': 'None.'}, name='index'),
-    path('admin/', admin.site.urls),
-    path('admin/doc/', include('django.contrib.admindocs.urls')),
+    path('', permission_denied, {'exception': ''}, name='index'),
+    path('admin/', include('admin_honeypot.urls', namespace='admin_honeypot')),
+    path('postcot/', admin.site.urls),
+    path('postcot/doc/', include('django.contrib.admindocs.urls')),
 ]
