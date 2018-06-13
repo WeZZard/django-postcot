@@ -13,16 +13,14 @@ class AccessControlForm(forms.ModelForm):
         self.fields['postfix_identifier'].widget.attrs['readonly']='readonly'
 
     phase: AccessControlPhase = enumfields.EnumField(
-        AccessControlPhase,
-        max_length=1,
+        AccessControlPhase
     ).formfield(
         label='Phase',
         initial=AccessControlPhase.CLIENT
     )
 
     input_kind: AccessControlInputKind = enumfields.EnumField(
-        AccessControlInputKind,
-        max_length=1,
+        AccessControlInputKind
     ).formfield(
         label='Input',
         initial=AccessControlInputKind.HOSTNAME

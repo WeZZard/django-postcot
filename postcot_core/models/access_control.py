@@ -11,12 +11,10 @@ import enumfields
 
 
 class AccessControl(models.Model):
-    phase: AccessControlPhase = enumfields.EnumField(
-        AccessControlPhase, max_length=1
-    )
+    phase: AccessControlPhase = enumfields.EnumField(AccessControlPhase)
 
     input_kind: AccessControlInputKind = enumfields.EnumField(
-        AccessControlInputKind, max_length=1
+        AccessControlInputKind
     )
 
     reverses_hostname: bool = models.BooleanField(

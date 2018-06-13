@@ -38,7 +38,6 @@ class Account(models.Model):
     )
 
     is_active: bool = models.BooleanField(
-        max_length=1,
         default=True,
         verbose_name='Active'
     )
