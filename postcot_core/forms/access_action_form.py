@@ -3,7 +3,7 @@ from typing import Dict
 from django import forms
 from django.contrib.admin import widgets as admin_widgets
 
-from postcot_primary.models import AccessAction
+from postcot_core.models import AccessAction
 
 
 class AccessActionForm(forms.ModelForm):
