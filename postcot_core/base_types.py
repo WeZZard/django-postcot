@@ -42,7 +42,7 @@ class AccessControlInputKind(enumfields.Enum):
         NS_RECORD = 'NS Record'
         SASL = 'SASL'
 
-    def pattern_validator(self) -> Optional[Type[Callable[[str], NoReturn]]]:
+    def pattern_validator(self) -> Optional[Type[Callable[[str], None]]]:
         if self == AccessControlInputKind.CERT:
             return CertificateFingerprintPatternValidator
         if self == AccessControlInputKind.HOSTNAME:
