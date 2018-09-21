@@ -17,9 +17,9 @@ import os
 #
 # SECURITY WARNING: keep the secret key used in production secret!
 #
-SECRET_KEY: str = os.environ.get('POSTCOT_SECRET_KEY')
+SECRET_KEY: str = os.environ.get('DJANGO_SECRET_KEY')
 if SECRET_KEY is None or len(SECRET_KEY) == 0:
-    SECRET_KEY = 'vn=uq)%vgh7ef)j-=f9u7qzb+4cten#4$l7_jn61t=g7d*6900'
+    raise AssertionError('Environment variable DJANGO_SECRET_KEY not get set.')
 
 # Set your own allowed hosts by setting POSTCOT_ALLOWED_HOSTS environment
 # variable.
