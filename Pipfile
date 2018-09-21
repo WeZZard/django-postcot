@@ -11,7 +11,7 @@ docutils = "*"
 django-enumfields = "*"
 django-admin-honeypot = "*"
 uwsgi = "*"
-psycopg2-binary = '*'
+psycopg2 = { git = 'https://github.com/WeZZard/psycopg2.git', branch = '2_7_5_FreeBSD' }
 
 [dev-packages]
 
