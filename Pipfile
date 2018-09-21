@@ -11,6 +11,7 @@ docutils = "*"
 django-enumfields = "*"
 django-admin-honeypot = "*"
 uwsgi = "*"
+psycopg2 = '*'
 
 [dev-packages]
 
