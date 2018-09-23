@@ -23,11 +23,11 @@ SECRET_KEY: str = os.environ.get('DJANGO_SECRET_KEY')
 if SECRET_KEY is None or len(SECRET_KEY) == 0:
     SECRET_KEY = 'vn=uq)%vgh7ef)j-=f9u7qzb+4cten#4$l7_jn61t=g7d*6900'
 
-# Set your own allowed hosts by setting POSTCOT_ALLOWED_HOSTS environment
+# Set your own allowed hosts by setting DJANGO_ALLOWED_HOSTS environment
 # variable.
 #
 ALLOWED_HOSTS = []
-PRIMITIVE_ALLOWED_HOSTS: str = os.environ.get('POSTCOT_ALLOWED_HOSTS')
+PRIMITIVE_ALLOWED_HOSTS: str = os.environ.get('DJANGO_ALLOWED_HOSTS')
 if PRIMITIVE_ALLOWED_HOSTS is not None and len(PRIMITIVE_ALLOWED_HOSTS) > 0:
     ALLOWED_HOSTS = list(PRIMITIVE_ALLOWED_HOSTS.split(', '))
 
