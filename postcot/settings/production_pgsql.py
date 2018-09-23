@@ -4,7 +4,7 @@ DEBUG = False
 
 _DB_HOST: str = os.environ.get('POSTCOT_PGSQL_DB_HOST')
 if _DB_HOST is None or len(_DB_HOST) == 0:
-    _DB_HOST = 'localhost'  # Default host
+    _DB_HOST = ''  # Default host
 
 _DB_PORT: str = os.environ.get('POSTCOT_PGSQL_DB_PORT')
 if _DB_PORT is None or len(_DB_PORT) == 0:
