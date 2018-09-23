@@ -1,0 +1,29 @@
+div.help dl span.postfix_keyword,
+div.help dl p span.postfix_keyword {
+    font-style: italic;
+}
+
+div.help dl span.postfix_keyword span.fixed,
+div.help dl p span.postfix_keyword span.fixed {
+    font-style: normal;
+    font-weight: bold;
+}
+
+div.help dl span.postfix_keyword span.dynamic,
+div.help dl p span.postfix_keyword span.dynamic {
+    font-weight: normal;
+}
+
+div.help dl span.postfix_user_string,
+div.help dl p span.postfix_user_string {
+    font-style: italic;
+    font-weight: normal;
+}
+
+div.help dl dt {
+    font-weight: normal;
+}
+
+div.help dl dd {
+    margin-left: 20px;
+}
