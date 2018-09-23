@@ -15,11 +15,13 @@ import os
 # Set your own secret key by setting the POSTCOT_SECRET_KEY environment
 # variable.
 #
-# SECURITY WARNING: keep the secret key used in production secret!
+# SECURITY WARNING: Do not use the default secrete key in production
+# environment and keep the secret key used in production environment
+# secret!
 #
 SECRET_KEY: str = os.environ.get('DJANGO_SECRET_KEY')
 if SECRET_KEY is None or len(SECRET_KEY) == 0:
-    raise AssertionError('Environment variable DJANGO_SECRET_KEY not get set.')
+    SECRET_KEY = 'vn=uq)%vgh7ef)j-=f9u7qzb+4cten#4$l7_jn61t=g7d*6900'
 
 # Set your own allowed hosts by setting POSTCOT_ALLOWED_HOSTS environment
 # variable.

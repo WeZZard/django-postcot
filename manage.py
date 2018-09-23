@@ -4,7 +4,6 @@ import sys
 
 if __name__ == "__main__":
     os.environ.setdefault("DJANGO_SETTINGS_MODULE", "postcot.settings.development")
-    os.environ.setdefault("DJANGO_SECRET_KEY", "vn=uq)%vgh7ef)j-=f9u7qzb+4cten#4$l7_jn61t=g7d*6900")
     try:
         from django.core.management import execute_from_command_line
     except ImportError as exc:
