@@ -11,6 +11,9 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
 import os
+import binascii
+
+DEBUG = os.environ.get('DJANGO_DEBUG', True)
 
 # Set your own secret key by setting the POSTCOT_SECRET_KEY environment
 # variable.
@@ -19,17 +22,12 @@ import os
 # environment and keep the secret key used in production environment
 # secret!
 #
-SECRET_KEY: str = os.environ.get('DJANGO_SECRET_KEY')
-if SECRET_KEY is None or len(SECRET_KEY) == 0:
-    SECRET_KEY = 'vn=uq)%vgh7ef)j-=f9u7qzb+4cten#4$l7_jn61t=g7d*6900'
+SECRET_KEY: str = os.environ.get('DJANGO_SECRET_KEY', binascii.hexlify(os.urandom(25)))
 
 # Set your own allowed hosts by setting DJANGO_ALLOWED_HOSTS environment
 # variable.
 #
-ALLOWED_HOSTS = []
-PRIMITIVE_ALLOWED_HOSTS: str = os.environ.get('DJANGO_ALLOWED_HOSTS')
-if PRIMITIVE_ALLOWED_HOSTS is not None and len(PRIMITIVE_ALLOWED_HOSTS) > 0:
-    ALLOWED_HOSTS = list(PRIMITIVE_ALLOWED_HOSTS.split(', '))
+ALLOWED_HOSTS = os.environ.get('DJANGO_ALLOWED_HOSTS', '').split(', ')
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 #

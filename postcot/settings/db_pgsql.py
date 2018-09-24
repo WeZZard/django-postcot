@@ -1,7 +1,5 @@
 from .base import *
 
-DEBUG = False
-
 _DB_HOST: str = os.environ.get('POSTCOT_PGSQL_DB_HOST')
 if _DB_HOST is None or len(_DB_HOST) == 0:
     _DB_HOST = ''  # Default host
