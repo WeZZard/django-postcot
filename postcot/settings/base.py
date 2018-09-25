@@ -13,6 +13,10 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 import os
 import binascii
 
+# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+#
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
 DEBUG = os.environ.get('DJANGO_DEBUG', True)
 
 # Set your own secret key by setting the POSTCOT_SECRET_KEY environment
@@ -27,11 +31,9 @@ SECRET_KEY: str = os.environ.get('DJANGO_SECRET_KEY', binascii.hexlify(os.urando
 # Set your own allowed hosts by setting DJANGO_ALLOWED_HOSTS environment
 # variable.
 #
-ALLOWED_HOSTS = os.environ.get('DJANGO_ALLOWED_HOSTS', '').split(', ')
-
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-#
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+PRIMITIVE_ALLOWED_HOSTS = os.environ.get('DJANGO_ALLOWED_HOSTS', '')
+ALLOWED_HOSTS = [] if PRIMITIVE_ALLOWED_HOSTS == '' \
+    else PRIMITIVE_ALLOWED_HOSTS.split(', ')
 
 # Application definition
 #
