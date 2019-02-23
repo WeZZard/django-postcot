@@ -1,0 +1,1 @@
+web: gunicorn postcot.wsgi:application --log-file -
